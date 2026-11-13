@@ -4,6 +4,11 @@
 [![Rules](https://img.shields.io/badge/rules-129-blue.svg)](#规则构成)
 [![No Root](https://img.shields.io/badge/root-not%20required-green.svg)](#为什么不需要-root)
 
+> 💡 **增强维护版说明**：本仓库基于 [@lukezzt8/SportWorld-CampusRun-AdBlock](https://github.com/lukezzt8/SportWorld-CampusRun-AdBlock) 改进（已提交上游 PR [#1](https://github.com/lukezzt8/SportWorld-CampusRun-AdBlock/pull/1)），修复了原规则误伤淘宝/饿了么图片与抖音/快手的问题（引入 `PROCESS-NAME` 进程级隔离 + 补齐 `+.` 子域通配），并新增 **FlClash / Clash Verge Rev 一键导入 `.js` 脚本**：
+> - 📦 **一键脚本直链下载（Release 包）**：[`campusrun_flclash_script.js`](https://github.com/zou-handy/SportWorld-CampusRun-AdBlock/releases/download/v1.1.0/campusrun_flclash_script.js)
+> - ⚡ **国内免翻墙 CDN 直链**：[`https://cdn.jsdelivr.net/gh/zou-handy/SportWorld-CampusRun-AdBlock@main/scripts/campusrun_flclash_script.js`](https://cdn.jsdelivr.net/gh/zou-handy/SportWorld-CampusRun-AdBlock@main/scripts/campusrun_flclash_script.js)
+
+
 ## 🎯 不懂技术?复制这段话给 AI 就行
 
 打开任意 AI 助手(**豆包 / DeepSeek / 通义千问 / ChatGPT** 都行),把下面这段发给它:
@@ -14,7 +19,7 @@
 我完全不懂技术,请你手把手教我:
 
 1. 规则已经有人做好了,地址是:
-   https://github.com/lukezzt8/SportWorld-CampusRun-AdBlock
+   https://github.com/zou-handy/SportWorld-CampusRun-AdBlock
 
 2. 每次只让我做一件事,我回复「好了」你再讲下一步
 
@@ -94,19 +99,19 @@ AI 会先问你几个问题,然后一步步带你做完。**卡住了就直接�
 **Clash rule-provider 地址(GitHub 源):**
 
 `
-https://raw.githubusercontent.com/lukezzt8/SportWorld-CampusRun-AdBlock/main/rules/campusrun.yaml
+https://raw.githubusercontent.com/zou-handy/SportWorld-CampusRun-AdBlock/main/rules/campusrun.yaml
 `
 
 **国内推荐用 jsDelivr CDN 镜像**(GitHub raw 在国内经常无法访问,CDN 更快更稳):
 
 `
-https://cdn.jsdelivr.net/gh/lukezzt8/SportWorld-CampusRun-AdBlock@main/rules/campusrun.yaml
+https://cdn.jsdelivr.net/gh/zou-handy/SportWorld-CampusRun-AdBlock@main/rules/campusrun.yaml
 `
 
 **hosts 文件地址:**
 
 `
-https://cdn.jsdelivr.net/gh/lukezzt8/SportWorld-CampusRun-AdBlock@main/rules/hosts.txt
+https://cdn.jsdelivr.net/gh/zou-handy/SportWorld-CampusRun-AdBlock@main/rules/hosts.txt
 `
 
 使用 CDN 地址作为 rule-provider 的示例:
@@ -118,7 +123,7 @@ rule-providers:
     behavior: domain
     format: yaml
     interval: 86400
-    url: 'https://cdn.jsdelivr.net/gh/lukezzt8/SportWorld-CampusRun-AdBlock@main/rules/campusrun.yaml'
+    url: 'https://cdn.jsdelivr.net/gh/zou-handy/SportWorld-CampusRun-AdBlock@main/rules/campusrun.yaml'
 `
 
 > 用 URL 方式的好处:规则更新后客户端会自动拉取,不用手动替换文件。
@@ -126,11 +131,11 @@ rule-providers:
 > **关于缓存**:jsDelivr 与 GitHub raw 都有 CDN 缓存(通常几分钟到几小时)。
 > 如果想确保拿到最新版本,可以在 URL 后加一个查询参数强制刷新,例如:
 > `
-> https://cdn.jsdelivr.net/gh/lukezzt8/SportWorld-CampusRun-AdBlock@main/rules/campusrun.yaml?v=1
+> https://cdn.jsdelivr.net/gh/zou-handy/SportWorld-CampusRun-AdBlock@main/rules/campusrun.yaml?v=1
 > `
 > 或者直接按 commit 哈希引用(永久有效、无缓存延迟):
 > `
-> https://cdn.jsdelivr.net/gh/lukezzt8/SportWorld-CampusRun-AdBlock@<commit>/rules/campusrun.yaml
+> https://cdn.jsdelivr.net/gh/zou-handy/SportWorld-CampusRun-AdBlock@<commit>/rules/campusrun.yaml
 > `
 
 ---

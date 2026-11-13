@@ -16,7 +16,7 @@
 我完全不懂技术,请你手把手教我,具体这样要求:
 
 1. 规则已经有人做好了,地址是:
-   https://github.com/lukezzt8/SportWorld-CampusRun-AdBlock
+   https://github.com/zou-handy/SportWorld-CampusRun-AdBlock
 
 2. 每次只让我做一件事,我做完回复你「好了」,你再讲下一步
 
@@ -66,7 +66,7 @@ AI 大概率会让你装一个叫 **Clash Meta for Android** 的 App。
 
 1. 手机浏览器打开:
    ```
-   https://cdn.jsdelivr.net/gh/lukezzt8/SportWorld-CampusRun-AdBlock@main/configs/standalone.yaml
+   https://cdn.jsdelivr.net/gh/zou-handy/SportWorld-CampusRun-AdBlock@main/configs/standalone.yaml
    ```
 2. 页面会显示一堆文字,**长按 → 全选 → 复制**
 3. 打开手机自带的「**记事本**」或「**备忘录**」
@@ -141,7 +141,7 @@ A:**千万不要**直接导上面的 `standalone.yaml`,否则会把你原有的�
    - Release 直接下载包: 见仓库右侧 **Releases** 页面中的 `campusrun_flclash_script.js`
    - 国内免翻墙 CDN 直链(长按全选复制保存为 `campusrun.js`,或直接浏览器下载):
      ```
-     https://cdn.jsdelivr.net/gh/lukezzt8/SportWorld-CampusRun-AdBlock@main/scripts/campusrun_flclash_script.js
+     https://cdn.jsdelivr.net/gh/zou-handy/SportWorld-CampusRun-AdBlock@main/scripts/campusrun_flclash_script.js
      ```
 2. 打开 **FlClash** → 点底部「**工具**」→ 点「**脚本 (Script)**」→ 点右下角「**+**」导入这个 `.js` 文件
 3. 进入你当前正在用的机场订阅配置 → 在「脚本覆写」里勾选启用它 → 确保主页打开了 **VPN 大开关**且模式为「**规则**」即可(跑完步也不用关,平时刷淘宝/抖音完全不受影响)。
@@ -151,7 +151,7 @@ A:**千万不要**直接导上面的 `standalone.yaml`,否则会把你原有的�
 **Q:我用的是 AdGuard / 路由器,能行吗?**
 A:能。用这个网址:
 ```
-https://cdn.jsdelivr.net/gh/lukezzt8/SportWorld-CampusRun-AdBlock@main/rules/hosts.txt
+https://cdn.jsdelivr.net/gh/zou-handy/SportWorld-CampusRun-AdBlock@main/rules/hosts.txt
 ```
 **不确定怎么加?还是问 AI。**
 
@@ -190,7 +190,7 @@ rule-providers:
     behavior: domain
     format: yaml
     interval: 86400
-    url: 'https://cdn.jsdelivr.net/gh/lukezzt8/SportWorld-CampusRun-AdBlock@main/rules/campusrun.yaml'
+    url: 'https://cdn.jsdelivr.net/gh/zou-handy/SportWorld-CampusRun-AdBlock@main/rules/campusrun.yaml'
 
 rules:
   - 'RULE-SET,campusrun,REJECT'    # 必须在最前面
