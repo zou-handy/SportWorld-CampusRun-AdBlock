@@ -1,16 +1,33 @@
-// 运动世界校园 (com.zjwh.android_wh_physicalfitness) 防误伤一键去广告脚本
+// 运动世界校园 (com.zjwh.android_wh_physicalfitness) 防误伤一键去广告脚本 v1.2.0
 // 适用客户端：FlClash (Android / Desktop)、Clash Verge Rev、Mihomo Party 等支持 JavaScript 覆写的客户端
 // 核心优势：
-//   1. 保留你原有的机场订阅与分流节点，跑完步无需来回开关配置；
-//   2. 通过 PROCESS-NAME 进程级精准隔离 taobao.com / alicdn.com / snssdk.com / kuaishou.com，
-//      在运动世界内彻底阻断摇一摇跳转广告，同时绝不误伤日常淘宝、饿了么图片、抖音、快手与 QQ！
+//   1. 保留你原有的机场订阅与分流节点，跑完步无需来回开关配置，订阅自动更新也不会冲掉规则；
+//   2. 进程级精准隔离 (PROCESS-NAME)：在运动世界内彻底阻断千问 Qwen / 通义 / 夸克 / UC汇川 / 淘宝 / 抖音直播流 / 快手图床跳转，
+//      同时日常使用千问、夸克、淘宝、饿了么、抖音、快手、QQ 100% 零误伤；
+//   3. 外科手术级拦截运动世界自家运营横幅与发现流子域 (discovery.gxapp.iydsj.com / swapp-image.gxapp.iydsj.com / fxzb.vip)，
+//      完整保留跑步核心与防作弊业务域 (run / datapoint / partner / h5 / gxapp-images)。
 //
-// FlClash 导入步骤：
-//   打开 FlClash -> 底部「工具」->「脚本 (Script)」-> 右下角「+」导入本文件 -> 在当前代理配置的覆写中开启该脚本。
+// FlClash (v0.9.3+) 完整启用两步法（缺一不可）：
+//   第一步（导入仓库）：底部「工具」->「进阶配置」->「脚本」-> 右上角「添加」导入本文件；
+//   第二步（绑定生效）：底部「配置」-> 长按当前正在用的订阅卡片 -> 点「扩展」-> 切到「脚本模式」-> 勾选本脚本 -> 点右上角「立即应用」！
 
 function main(config) {
+  if (!config || typeof config !== "object") {
+    return config;
+  }
   const campusRunAdRules = [
-    // 1. 仅在运动世界校园 App 进程内拦截电商/短视频推广跳转与公共 CDN（日常刷淘宝/饿了么/抖音/快手零影响）
+    // 1. 仅在运动世界校园进程内拦截千问/夸克/UC汇川/淘宝/抖音/快手共享域与广告 HTTPDNS（47 条，日常 App 零误伤）
+    "AND,((PROCESS-NAME,com.zjwh.android_wh_physicalfitness),(DOMAIN-SUFFIX,qianwen.com)),REJECT",
+    "AND,((PROCESS-NAME,com.zjwh.android_wh_physicalfitness),(DOMAIN-SUFFIX,qwen.ai)),REJECT",
+    "AND,((PROCESS-NAME,com.zjwh.android_wh_physicalfitness),(DOMAIN-SUFFIX,tongyi.aliyun.com)),REJECT",
+    "AND,((PROCESS-NAME,com.zjwh.android_wh_physicalfitness),(DOMAIN-SUFFIX,quark.cn)),REJECT",
+    "AND,((PROCESS-NAME,com.zjwh.android_wh_physicalfitness),(DOMAIN-SUFFIX,myquark.cn)),REJECT",
+    "AND,((PROCESS-NAME,com.zjwh.android_wh_physicalfitness),(DOMAIN-SUFFIX,uc.cn)),REJECT",
+    "AND,((PROCESS-NAME,com.zjwh.android_wh_physicalfitness),(DOMAIN-SUFFIX,ucweb.com)),REJECT",
+    "AND,((PROCESS-NAME,com.zjwh.android_wh_physicalfitness),(DOMAIN-SUFFIX,sm.cn)),REJECT",
+    "AND,((PROCESS-NAME,com.zjwh.android_wh_physicalfitness),(DOMAIN-SUFFIX,effirst.com)),REJECT",
+    "AND,((PROCESS-NAME,com.zjwh.android_wh_physicalfitness),(DOMAIN-SUFFIX,aliapp.org)),REJECT",
+    "AND,((PROCESS-NAME,com.zjwh.android_wh_physicalfitness),(DOMAIN-SUFFIX,tb.cn)),REJECT",
     "AND,((PROCESS-NAME,com.zjwh.android_wh_physicalfitness),(DOMAIN-SUFFIX,taobao.com)),REJECT",
     "AND,((PROCESS-NAME,com.zjwh.android_wh_physicalfitness),(DOMAIN-SUFFIX,tmall.com)),REJECT",
     "AND,((PROCESS-NAME,com.zjwh.android_wh_physicalfitness),(DOMAIN-SUFFIX,alicdn.com)),REJECT",
@@ -20,29 +37,40 @@ function main(config) {
     "AND,((PROCESS-NAME,com.zjwh.android_wh_physicalfitness),(DOMAIN-SUFFIX,snssdk.com)),REJECT",
     "AND,((PROCESS-NAME,com.zjwh.android_wh_physicalfitness),(DOMAIN-SUFFIX,pstatp.com)),REJECT",
     "AND,((PROCESS-NAME,com.zjwh.android_wh_physicalfitness),(DOMAIN-SUFFIX,zijieapi.com)),REJECT",
+    "AND,((PROCESS-NAME,com.zjwh.android_wh_physicalfitness),(DOMAIN-SUFFIX,bytedance.com)),REJECT",
     "AND,((PROCESS-NAME,com.zjwh.android_wh_physicalfitness),(DOMAIN-SUFFIX,bytedance.net)),REJECT",
+    "AND,((PROCESS-NAME,com.zjwh.android_wh_physicalfitness),(DOMAIN-SUFFIX,douyin.com)),REJECT",
+    "AND,((PROCESS-NAME,com.zjwh.android_wh_physicalfitness),(DOMAIN-SUFFIX,bytescm.com)),REJECT",
     "AND,((PROCESS-NAME,com.zjwh.android_wh_physicalfitness),(DOMAIN-SUFFIX,volces.com)),REJECT",
     "AND,((PROCESS-NAME,com.zjwh.android_wh_physicalfitness),(DOMAIN-SUFFIX,toutiaopage.com)),REJECT",
-    "AND,((PROCESS-NAME,com.zjwh.android_wh_physicalfitness),(DOMAIN-SUFFIX,b.bdstatic.com)),REJECT",
     "AND,((PROCESS-NAME,com.zjwh.android_wh_physicalfitness),(DOMAIN-SUFFIX,kuaishou.com)),REJECT",
     "AND,((PROCESS-NAME,com.zjwh.android_wh_physicalfitness),(DOMAIN-SUFFIX,kuaishou.cn)),REJECT",
     "AND,((PROCESS-NAME,com.zjwh.android_wh_physicalfitness),(DOMAIN-SUFFIX,gifshow.com)),REJECT",
     "AND,((PROCESS-NAME,com.zjwh.android_wh_physicalfitness),(DOMAIN-SUFFIX,ksapisrv.com)),REJECT",
+    "AND,((PROCESS-NAME,com.zjwh.android_wh_physicalfitness),(DOMAIN-SUFFIX,yximgs.com)),REJECT",
+    "AND,((PROCESS-NAME,com.zjwh.android_wh_physicalfitness),(DOMAIN-SUFFIX,etoote.com)),REJECT",
+    "AND,((PROCESS-NAME,com.zjwh.android_wh_physicalfitness),(DOMAIN-SUFFIX,kwimgs.com)),REJECT",
+    "AND,((PROCESS-NAME,com.zjwh.android_wh_physicalfitness),(DOMAIN-SUFFIX,kwai.com)),REJECT",
+    "AND,((PROCESS-NAME,com.zjwh.android_wh_physicalfitness),(DOMAIN-SUFFIX,b.bdstatic.com)),REJECT",
+    "AND,((PROCESS-NAME,com.zjwh.android_wh_physicalfitness),(DOMAIN-SUFFIX,bcelive.com)),REJECT",
+    "AND,((PROCESS-NAME,com.zjwh.android_wh_physicalfitness),(DOMAIN,haokan.baidu.com)),REJECT",
     "AND,((PROCESS-NAME,com.zjwh.android_wh_physicalfitness),(DOMAIN-SUFFIX,weimob.com)),REJECT",
     "AND,((PROCESS-NAME,com.zjwh.android_wh_physicalfitness),(DOMAIN-SUFFIX,images.sohu.com)),REJECT",
     "AND,((PROCESS-NAME,com.zjwh.android_wh_physicalfitness),(DOMAIN-SUFFIX,qzs.qq.com)),REJECT",
     "AND,((PROCESS-NAME,com.zjwh.android_wh_physicalfitness),(DOMAIN-SUFFIX,i.gtimg.cn)),REJECT",
     "AND,((PROCESS-NAME,com.zjwh.android_wh_physicalfitness),(DOMAIN-SUFFIX,qzonestyle.gtimg.cn)),REJECT",
-    "AND,((PROCESS-NAME,com.zjwh.android_wh_physicalfitness),(DOMAIN,webcast5-open-lf.douyin.com)),REJECT",
-    "AND,((PROCESS-NAME,com.zjwh.android_wh_physicalfitness),(DOMAIN,webcast-open.douyin.com)),REJECT",
-    "AND,((PROCESS-NAME,com.zjwh.android_wh_physicalfitness),(DOMAIN,lf-cdn-tos.bytescm.com)),REJECT",
-    "AND,((PROCESS-NAME,com.zjwh.android_wh_physicalfitness),(DOMAIN,haokan.baidu.com)),REJECT",
     "AND,((PROCESS-NAME,com.zjwh.android_wh_physicalfitness),(DOMAIN,api.ip.sb)),REJECT",
     "AND,((PROCESS-NAME,com.zjwh.android_wh_physicalfitness),(DOMAIN,ipapi.co)),REJECT",
     "AND,((PROCESS-NAME,com.zjwh.android_wh_physicalfitness),(DOMAIN,api.ipapi.is)),REJECT",
     "AND,((PROCESS-NAME,com.zjwh.android_wh_physicalfitness),(DOMAIN,ipwho.is)),REJECT",
+    "AND,((PROCESS-NAME,com.zjwh.android_wh_physicalfitness),(DOMAIN-KEYWORD,httpdns),(NOT,((DOMAIN-SUFFIX,amap.com)))),REJECT",
 
-    // 2. 全局拦截运动世界内置的 11 家纯广告与追踪 SDK 域名（99 条）
+    // 2. 运动世界自家非核心推广与轮播横幅子域（3 条；严禁屏蔽 run/datapoint/partner/h5 核心跑步与极验风控子域）
+    "DOMAIN,discovery.gxapp.iydsj.com,REJECT",
+    "DOMAIN,swapp-image.gxapp.iydsj.com,REJECT",
+    "DOMAIN-SUFFIX,fxzb.vip,REJECT",
+
+    // 3. 全局拦截运动世界内置的纯广告与追踪 SDK 域名（99 条）
     "DOMAIN-SUFFIX,tanx.com,REJECT",
     "DOMAIN-SUFFIX,alimama.com,REJECT",
     "DOMAIN-SUFFIX,simba.taobao.com,REJECT",
@@ -144,9 +172,7 @@ function main(config) {
     "DOMAIN,scc.bytedance.com,REJECT"
   ];
 
-  if (!config.rules) {
-    config.rules = [];
-  }
-  config.rules = [...campusRunAdRules, ...config.rules];
+  const existingRules = Array.isArray(config.rules) ? config.rules : [];
+  config.rules = [...new Set([...campusRunAdRules, ...existingRules])];
   return config;
 }

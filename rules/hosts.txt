@@ -1,6 +1,7 @@
-# 运动世界校园 纯广告域名 / hosts format（零误伤纯净版）
-# 共 99 条，可安全导入 AdGuard / NetGuard / RethinkDNS / AdAway，不影响淘宝/饿了么/抖音正常使用
+# 运动世界校园 纯广告与自家推广子域 / hosts format v1.2.0（零误伤纯净版）
+# 共 102 条，可安全导入 AdGuard / NetGuard / RethinkDNS / AdAway，不影响跑步成绩上传与日常 App
 
+0.0.0.0 fxzb.vip
 0.0.0.0 tanx.com
 0.0.0.0 alimama.com
 0.0.0.0 simba.taobao.com
@@ -79,6 +80,8 @@
 0.0.0.0 union.sogou.com
 0.0.0.0 dynamic_cast.cc
 0.0.0.0 tdid.m.qq.com
+0.0.0.0 discovery.gxapp.iydsj.com
+0.0.0.0 swapp-image.gxapp.iydsj.com
 0.0.0.0 dm.bytedance.com
 0.0.0.0 dm.toutiao.com
 0.0.0.0 x.jd.com

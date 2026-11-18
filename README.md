@@ -1,12 +1,15 @@
 # 运动世界校园 · 去广告规则
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Rules](https://img.shields.io/badge/rules-129-blue.svg)](#规则构成)
+[![Rules](https://img.shields.io/badge/rules-149-blue.svg)](#规则构成)
 [![No Root](https://img.shields.io/badge/root-not%20required-green.svg)](#为什么不需要-root)
 
-> 💡 **增强维护版说明**：本仓库基于 [@lukezzt8/SportWorld-CampusRun-AdBlock](https://github.com/lukezzt8/SportWorld-CampusRun-AdBlock) 改进（已提交上游 PR [#1](https://github.com/lukezzt8/SportWorld-CampusRun-AdBlock/pull/1)），修复了原规则误伤淘宝/饿了么图片与抖音/快手的问题（引入 `PROCESS-NAME` 进程级隔离 + 补齐 `+.` 子域通配），并新增 **FlClash / Clash Verge Rev 一键导入 `.js` 脚本**：
-> - 📦 **一键脚本直链下载（Release 包）**：[`campusrun_flclash_script.js`](https://github.com/zou-handy/SportWorld-CampusRun-AdBlock/releases/download/v1.1.0/campusrun_flclash_script.js)
-> - ⚡ **国内免翻墙 CDN 直链**：[`https://cdn.jsdelivr.net/gh/zou-handy/SportWorld-CampusRun-AdBlock@main/scripts/campusrun_flclash_script.js`](https://cdn.jsdelivr.net/gh/zou-handy/SportWorld-CampusRun-AdBlock@main/scripts/campusrun_flclash_script.js)
+> 💡 **增强维护版说明（v1.2.0）**：本仓库基于 [@lukezzt8/SportWorld-CampusRun-AdBlock](https://github.com/lukezzt8/SportWorld-CampusRun-AdBlock) 深度改进（已提交上游 PR [#1](https://github.com/lukezzt8/SportWorld-CampusRun-AdBlock/pull/1)）：
+> 1. **进程级防误伤隔离（`PROCESS-NAME`）**：彻底阻断运动世界开屏/摇一摇自动跳转**千问 Qwen、通义、夸克、UC 汇川、淘宝、抖音直播流、快手广告图床**，同时日常刷千问/夸克/淘宝/饿了么/抖音/快手 **100% 零误伤**；
+> 2. **突破「自家服务器横幅不可拦」边界**：经 Mihomo `:9090` 实时进程连接取证，运动世界后端采用微服务子域拆分——外科手术级精准拦截自家发现流与轮播横幅子域（`discovery.gxapp.iydsj.com`、`swapp-image.gxapp.iydsj.com`、`fxzb.vip`），同时 **100% 放行**核心跑步、GPS 轨迹上传与极验防作弊子域（`run.gxapp.iydsj.com`、`datapoint.gxapp.iydsj.com`、`partner.iydsj.com`、`h5.gxapp.iydsj.com`）；
+> 3. **FlClash / Clash Verge Rev 一键导入 `.js` 脚本**：
+>    - 📦 **一键脚本直链下载（Release v1.2.0）**：[`campusrun_flclash_script.js`](https://github.com/zou-handy/SportWorld-CampusRun-AdBlock/releases/download/v1.2.0/campusrun_flclash_script.js)
+>    - ⚡ **国内免翻墙 CDN 直链**：[`https://cdn.jsdelivr.net/gh/zou-handy/SportWorld-CampusRun-AdBlock@main/scripts/campusrun_flclash_script.js`](https://cdn.jsdelivr.net/gh/zou-handy/SportWorld-CampusRun-AdBlock@main/scripts/campusrun_flclash_script.js)
 
 
 ## 🎯 不懂技术?复制这段话给 AI 就行
@@ -50,20 +53,23 @@ AI 会先问你几个问题,然后一步步带你做完。**卡住了就直接�
 
 | 类型 | 条数 | 说明 |
 |---|---|---|
-| `AND` + `PROCESS-NAME` 进程级隔离规则 | 30 | 仅在运动世界校园进程内拦截 `taobao.com` / `alicdn.com` / `snssdk.com` / `kuaishou.com` 等共享域，**日常刷淘宝/饿了么/抖音/快手零误伤** |
+| `AND` + `PROCESS-NAME` 进程级隔离规则 | 47 | 仅在运动世界校园进程内拦截 `qianwen.com` / `quark.cn` / `uc.cn` / `taobao.com` / `alicdn.com` / `snssdk.com` / `douyin.com` / `kuaishou.com` / `yximgs.com` 及非高德 HTTPDNS，**日常使用千问/夸克/淘宝/饿了么/抖音/快手零误伤** |
+| 自家非核心推广与轮播横幅子域 | 3 | 精准拦截 `discovery.gxapp.iydsj.com`（发现页/活动流）、`swapp-image.gxapp.iydsj.com`（首页运营横幅图床）、`fxzb.vip`（内置商城），不影响核心跑步与成绩上传 |
 | `DOMAIN-SUFFIX` 纯广告 SDK 父域规则 | 78 | 一条覆盖整棵子树，抗动态子域（`campusrun.yaml` 中已补齐 `+.` 通配） |
 | `DOMAIN` 纯广告 SDK 精确规则 | 21 | 补齐父域规则未覆盖的独立广告主机 |
-| **合计** | **129** | 纯规则集 `rules/campusrun.yaml` 含 99 条纯广告 SDK 域名 |
+| **合计** | **149** | 纯域名规则集 `rules/campusrun.yaml` 含 102 条无副作用域名 |
 
-覆盖的广告平台:
+覆盖的广告与跳转平台:
 
 | 平台 | 归属 | 代表域名 |
 |---|---|---|
+| 阿里汇川 / 千问 / 夸克推广 | 阿里 | `qianwen.com`、`quark.cn`、`uc.cn`、`sm.cn`（进程级隔离） |
+| 运动世界自家发现流与轮播横幅 | 浙江万航 | `discovery.gxapp.iydsj.com`、`swapp-image.gxapp.iydsj.com`、`fxzb.vip` |
 | 腾讯优量汇 | 腾讯 | `gdt.qq.com`、`sdk.e.qq.com` |
-| 快手磁力引擎 | 快手 | `kuaishou.com`、`kskwai.com` |
-| 穿山甲 / GroMore | 字节跳动 | `snssdk.com`、`pstatp.com` |
-| 百度 Mobads | 百度 | `mobads.baidu.com`、`cpro.baidustatic.com` |
-| 阿里天目 | 阿里 | `tianmu.mobi` |
+| 快手磁力引擎 | 快手 | `kuaishou.com`、`kskwai.com`、`yximgs.com` |
+| 穿山甲 / GroMore / 抖音流 | 字节跳动 | `snssdk.com`、`pstatp.com`、`douyin.com`、`bytescm.com` |
+| 百度 Mobads | 百度 | `mobads.baidu.com`、`hmma.baidu.com`、`cpro.baidustatic.com` |
+| 阿里天目 / 妈妈 | 阿里 | `tianmu.mobi`、`tanx.com`、`alimama.com` |
 | 京东广告 | 京东 | `xlog.jd.com`、`dsp-x.jd.com` |
 | YFAN AdX | 第三方 | `yfanads.com` |
 | AdGain | 第三方 | `adgain.cn` |
@@ -79,11 +85,11 @@ AI 会先问你几个问题,然后一步步带你做完。**卡住了就直接�
 
 如果你平时已经在用 **FlClash（Android / 桌面端）**、**Clash Verge Rev** 或 **Mihomo Party**，直接导入 [`scripts/campusrun_flclash_script.js`](scripts/campusrun_flclash_script.js) 即可，**无需改动原有代理配置，跑完步也不用手动来回切配置**：
 
-1. 下载 [`scripts/campusrun_flclash_script.js`](scripts/campusrun_flclash_script.js)（也可直接在 Release 页面下载单文件）
-2. 打开 **FlClash** → 底部「**工具**」→「**脚本 (Script)**」→ 右下角「**+**」导入该 `.js` 文件
-3. 进入当前正在使用的代理订阅覆写设置，勾选启用该脚本，确保开启 **VPN（TUN）模式** 与「**规则**」分流即可
+1. 下载 [`scripts/campusrun_flclash_script.js`](scripts/campusrun_flclash_script.js)（也可直接在 Release 页面下载单文件，或复制上方 jsDelivr 直链通过 URL 导入）
+2. **第一步（导入脚本库）**：打开 **FlClash** → 底部「**工具**」→「**进阶配置**」→「**脚本**」→ 右上角「**添加**」导入该 `.js` 文件（注：本地文件每次更新需重新导入覆盖；若通过 URL 导入可直接点同步刷新）
+3. **第二步（绑定当前订阅生效，必做！）**：点底部「**配置**」→ **长按**你当前正在使用的机场订阅卡片 → 点「**扩展**」→ 将扩展模式从「标准」切为「**脚本**」→ 勾选 `campusrun_flclash_script` → 点右上角「**立即应用**」，并确保主页开启 **VPN（TUN）模式** 与「**规则**」分流即可！
 
-脚本会自动把 30 条 `PROCESS-NAME` 进程隔离规则 + 99 条纯广告 SDK 规则无损注入到你现有订阅 `rules` 的最前面（并自动去重）。
+脚本会自动把 47 条 `PROCESS-NAME` 进程隔离规则 + 3 条自家横幅子域 + 99 条纯广告 SDK 规则（共 149 条）无损注入到你现有订阅 `rules` 的最前面（并自动去重），订阅自动更新也不会冲掉规则。
 
 ### 方式二：直接导入独立配置（不需要代理）
 
@@ -142,7 +148,7 @@ rule-providers:
 
 ### 方式三:作为规则集叠加
 
-用 [`rules/campusrun.yaml`](rules/campusrun.yaml) 作为 Clash 的 `rule-provider`（注：纯域名规则集仅含 99 条纯广告 SDK 域，已剔除淘宝/抖音等共享域避免全局断网）：
+用 [`rules/campusrun.yaml`](rules/campusrun.yaml) 作为 Clash 的 `rule-provider`（注：纯域名规则集含 102 条无副作用域名，已剔除千问/夸克/淘宝/抖音等日常共享域避免全局断网）：
 
 ```yaml
 rule-providers:
@@ -160,7 +166,7 @@ rules:
 ### 方式四:YAML 合并进现有配置
 
 用 [`configs/prepend-rules.yaml`](configs/prepend-rules.yaml) ——
-适合 Clash Verge Rev 的「规则覆写」、mihomo 的 mixin/patch 功能（含完整 129 条规则及进程级防误伤隔离）。
+适合 Clash Verge Rev 的「规则覆写」、mihomo 的 mixin/patch 功能（含完整 149 条规则及进程级防误伤隔离）。
 
 > **如果你用 AI 帮忙合并配置**,请参考 [`docs/ai-prompt.md`](docs/ai-prompt.md),
 > 里面写了完整的约束条件(不改节点、不加 MATCH 兜底、不许改成关键词匹配等),
@@ -193,7 +199,7 @@ Clash 的规则是**按顺序匹配**的。如果广告规则排在后面,前面
 - **裸父域**:`baidu.com`、`qq.com`、`sogou.com`、`xiaomi.com` —— 只保留具体广告子域
 - **共享基础设施域**:`tracking.miui.com`、`metrics*.data.hicloud.com` 等 10 个
   —— 这些在小米/华为手机上属于系统级上报通道,屏蔽可能连累系统推送
-- **全部业务域**:该 App 的 `*.iydsj.com`、高德地图、个推推送、登录认证域名
+- **核心跑步与风控业务域**:`run.gxapp.iydsj.com`（跑步业务）、`datapoint.gxapp.iydsj.com`（轨迹/PV上报）、`partner.iydsj.com`（极验设备风控校验）、`h5.gxapp.iydsj.com`（成绩/规则 H5）、`gxapp-images.iydsj.com`（头像）、高德地图、个推推送、登录认证域名（注：切勿一刀切屏蔽 `iydsj.com` 根域，仅精准拦截 `discovery.gxapp.iydsj.com` 与 `swapp-image.gxapp.iydsj.com` 两个非核心推广/横幅子域）
 
 ---
 
@@ -250,18 +256,14 @@ Android 从 4.0 起提供 **`VpnService`** 机制,普通应用即可创建本地
 
 ---
 
-## 技术边界
+## 技术边界与微服务子域精筛说明
 
-**这个规则集拦截不了「服务端下发」的广告。**
-
-如果广告数据是随正常接口响应一起返回的,那么它与业务数据走**同一个 HTTPS 连接、同一个域名**。
-域名规则只能判断「连不连这个域名」,无法判断「这个连接返回的内容是广告还是正常数据」。
-
-而该 App 的业务域是**不能屏蔽的** —— 登录、跑步记录、上传全部依赖它。
-
-对于这类广告,需要使用**界面层**工具(如 [GKD](https://github.com/gkd-kit/gkd))在无障碍服务层面自动点击跳过。
-
-**网络层(本规则集)+ 界面层(GKD)的组合,是免 Root、不改 APK 前提下的最优解。**
+1. **为什么不能一刀切封死 `iydsj.com` 根域，却能干掉自家横幅？**
+   - 早期静态分析认为整个 `*.iydsj.com` 都不敢碰；但经真机 Mihomo `:9090` 实时进程连接取证，运动世界后端实际按**微服务子域**拆分：
+     - **核心业务与风控（严禁屏蔽）**：`run.gxapp.iydsj.com`（跑步规则与结算）、`datapoint.gxapp.iydsj.com`（实时 GPS 轨迹点上报）、`partner.iydsj.com`（极验 Geetest 防作弊设备校验）、`h5.gxapp.iydsj.com`（成绩单与规则 H5）。
+     - **发现流与运营轮播图床（v1.2.0 已精准拦截）**：`discovery.gxapp.iydsj.com`（发现页/社区活动流）、`swapp-image.gxapp.iydsj.com`（首页运营海报图床）、`fxzb.vip`（内置商城）。封禁这 3 个子域即可在不伤跑步和成绩上传的前提下，清空自家运营轮播图。
+2. **仅剩的理论边界**：
+   - 若未来某次版本把纯文字推广直接塞进 `run.gxapp.iydsj.com` 的同一个跑步配置 JSON 响应里（且不加载 `swapp-image` 外部海报图），网络层无法在不解密 HTTPS 的前提下剥离 JSON 字段，届时可配合界面层工具（如 [GKD](https://github.com/gkd-kit/gkd)）自动点击关闭。
 
 ---
 

@@ -1,15 +1,16 @@
-# 运动世界校园 纯广告 SDK 域名拦截规则 / Clash rule-provider（零误伤纯净版）
-# CampusRun Pure Ad-SDK Ruleset for Clash / mihomo (behavior: domain)
+# 运动世界校园 纯广告 SDK 与自家横幅子域拦截规则 / Clash rule-provider v1.2.0（零误伤纯净版）
+# CampusRun Pure Ad-SDK & First-Party Promo Ruleset for Clash / mihomo (behavior: domain)
 #
-# 规则条数: 99 (78 父域 '+.' 通配 + 21 精确域名)
+# 规则条数: 102 (79 父域 '+.' 通配 + 23 精确域名)
 # 说明:
-#   1. 父域均已补齐 Clash Meta / mihomo `behavior: domain` 必需的 `+.` 通配前缀, 确保覆盖全部动态子域 (如 sdk.e.qq.com)。
-#   2. 已剔除 taobao.com / alicdn.com / snssdk.com / kuaishou.com 等全网共享日常域名,
-#      避免全局 RULE-SET 导致淘宝、饿了么商品图、抖音、快手裂图断网。
-#   3. 如需在运动世界校园内部同时拦截摇一摇跳淘宝/抖音, 强烈推荐搭配 scripts/campusrun_flclash_script.js
-#      或 configs/prepend-rules.yaml 中的 PROCESS-NAME 进程级规则使用。
+#   1. 父域均已补齐 Clash Meta / mihomo `behavior: domain` 必需的 `+.` 通配前缀, 确保覆盖全部动态子域。
+#   2. 新增运动世界自家非核心推广子域 (discovery.gxapp.iydsj.com / swapp-image.gxapp.iydsj.com / +.fxzb.vip),
+#      严格避开 run.gxapp.iydsj.com / datapoint.gxapp.iydsj.com / partner.iydsj.com / h5.gxapp.iydsj.com 跑步与防作弊业务域。
+#   3. 已剔除 qianwen.com / quark.cn / taobao.com / alicdn.com / snssdk.com / kuaishou.com 等全网共享日常域名,
+#      避免全局 RULE-SET 导致日常 App 断网; 如需同时拦截摇一摇跳千问/淘宝/抖音, 请搭配 scripts/campusrun_flclash_script.js 使用。
 
 payload:
+  - '+.fxzb.vip'
   - '+.tanx.com'
   - '+.alimama.com'
   - '+.simba.taobao.com'
@@ -88,6 +89,8 @@ payload:
   - '+.union.sogou.com'
   - '+.dynamic_cast.cc'
   - '+.tdid.m.qq.com'
+  - 'discovery.gxapp.iydsj.com'
+  - 'swapp-image.gxapp.iydsj.com'
   - 'dm.bytedance.com'
   - 'dm.toutiao.com'
   - 'x.jd.com'

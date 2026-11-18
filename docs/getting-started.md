@@ -143,8 +143,8 @@ A:**千万不要**直接导上面的 `standalone.yaml`,否则会把你原有的�
      ```
      https://cdn.jsdelivr.net/gh/zou-handy/SportWorld-CampusRun-AdBlock@main/scripts/campusrun_flclash_script.js
      ```
-2. 打开 **FlClash** → 点底部「**工具**」→ 点「**脚本 (Script)**」→ 点右下角「**+**」导入这个 `.js` 文件
-3. 进入你当前正在用的机场订阅配置 → 在「脚本覆写」里勾选启用它 → 确保主页打开了 **VPN 大开关**且模式为「**规则**」即可(跑完步也不用关,平时刷淘宝/抖音完全不受影响)。
+2. **第一步（导入脚本库）**：打开 **FlClash** → 点底部「**工具**」→ 点「**进阶配置**」→ 点「**脚本**」→ 点右上角「**添加**」导入这个 `.js` 文件
+3. **第二步（绑定订阅生效，必做！）**：点底部「**配置**」→ **长按**你当前正在用的机场订阅卡片 → 点「**扩展**」→ 从「标准」切到「**脚本**」→ 勾选刚导入的脚本 → 点右上角「**立即应用**」，并确保主页打开了 **VPN 大开关**且模式为「**规则**」即可(跑完步也不用关,平时用千问/夸克/刷淘宝/抖音完全不受影响)。
 
 *(如果你的客户端不支持 `.js` 脚本,也可以改用 `configs/prepend-rules.yaml`,把「我已经有代理订阅了,不要动我的节点」连同该文件发给 AI 帮你合并。)*
 
@@ -166,7 +166,7 @@ https://cdn.jsdelivr.net/gh/zou-handy/SportWorld-CampusRun-AdBlock@main/rules/ho
 
 | 项目 | 说明 |
 |---|---|
-| 规则条数 | 129 条(30 条 `PROCESS-NAME` 进程级防误伤 + 78 条 `DOMAIN-SUFFIX` 父域 + 21 条 `DOMAIN` 精确) |
+| 规则条数 | 149 条(47 条 `PROCESS-NAME` 进程级防误伤 + 3 条自家横幅/发现流子域 + 78 条 `DOMAIN-SUFFIX` 父域 + 21 条 `DOMAIN` 精确) |
 | 适用客户端 | Clash / mihomo 系(FlClash、Clash Verge Rev、Clash Meta for Android、Mihomo Party…) |
 | 覆盖平台 | 腾讯优量汇、字节穿山甲+GroMore、快手磁力、百度 Mobads、阿里天目、京东广告、YFAN AdX、AdGain、友盟、OTS 线下推广、厂商广告 SDK |
 | 实测拦截率 | 85%(单次会话 459 次广告连接被拦截,且日常淘宝/饿了么/抖音/快手零误伤) |

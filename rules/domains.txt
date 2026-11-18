@@ -1,7 +1,8 @@
-# 运动世界校园 纯广告域名清单 / Plain domain list（零误伤纯净版）
-# 共 99 条 (78 父域 + 21 精确)，已剔除淘宝/抖音/快手主站与公共图片 CDN
+# 运动世界校园 纯广告与自家推广子域清单 / Plain domain list v1.2.0（零误伤纯净版）
+# 共 102 条 (79 父域 + 23 精确)，已剔除千问/夸克/淘宝/抖音/快手主站与核心跑步子域
 
-# ---- 父域 (78 条) ----
+# ---- 父域 (79 条) ----
+fxzb.vip
 tanx.com
 alimama.com
 simba.taobao.com
@@ -81,7 +82,9 @@ union.sogou.com
 dynamic_cast.cc
 tdid.m.qq.com
 
-# ---- 精确域名 (21 条) ----
+# ---- 精确域名 (23 条) ----
+discovery.gxapp.iydsj.com
+swapp-image.gxapp.iydsj.com
 dm.bytedance.com
 dm.toutiao.com
 x.jd.com
